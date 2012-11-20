@@ -1,29 +1,23 @@
 #include <Windows.h>
+#include <map>
 #include <sqlext.h>
 #include <string>
-/* 
-  Author:  Oliver SPryn
-  Course:  COMP 244, Database Management
-  Date:    11 October 2012 
-  Description:  This file is a wrapper for all of the functionality
-                required to connect and query the SQL server. It provides
-				multiple methods of connecting to a server via ODBC and
-				will determine the number and types of each	returned 
-				attribute.
-*/ 
-
-
 #include <vector>
 
+using std::map;
 using std::string;
 using std::vector;
 
 class Database {
 public : 
-	Database(char localServerName[]);
+	Database(char localServerName[], string database);
 	Database(char server[], char port[], char database[], char userID[], char password[]);
 	~Database();
-	vector<vector<string>> query(string query);
+
+	vector<map<string, string>> query(string query);
+
+	vector<string> attributes;
+	int size;
 
 protected : 
 	HANDLE cHandle;
@@ -36,7 +30,7 @@ protected :
 typedef struct {
 public : 
 	int columnPosition;
-	SQLCHAR columnName[128];
+	string columnName;
 	SQLSMALLINT columnType;
 	SQLULEN columnSize;
 } ColumnInfo;
