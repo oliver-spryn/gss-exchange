@@ -11,7 +11,7 @@
 using std::cout;
 using std::endl;
 
-int main(void) {
+int main(int argc, char *argv[]) {
 	try {
 		Database db("SQLServer", "PROJECT");
 
