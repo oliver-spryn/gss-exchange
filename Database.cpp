@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <iostream>
 #include <map>
 #include <sqlext.h>
 #include <sstream>
@@ -225,6 +226,10 @@ vector<map<string, string>> Database::query(string query) {
 //Execute the query
 	this->sReturn = SQLAllocHandle(SQL_HANDLE_STMT, this->cHandle, &this->sHandle);
 	this->sReturn = SQLExecDirect(this->sHandle, cQuery, queryLength);
+
+	delete cQuery;
+	cQueryP = NULL;
+	cQuery = NULL;
 	
 //Ensure the query was executed successfully
 	if (this->sReturn == SQL_SUCCESS || this->sReturn == SQL_SUCCESS_WITH_INFO) {
@@ -234,6 +239,102 @@ vector<map<string, string>> Database::query(string query) {
 			"The supplied SQL query contained a syntax error."));
 	}
 
+//Extract the data from the query
+	return this->extract();
+}
+
+vector<map<string, string>> Database::sQuery(string query, char** parameters) {
+//Allocate the statement handle
+	this->sReturn = SQLAllocHandle(SQL_HANDLE_STMT, this->cHandle, &this->sHandle);
+
+//Gather information about the query
+	SQLINTEGER queryLength = static_cast<SQLINTEGER>(query.length());
+	
+	char *cQueryP = new char[query.length() + 1];
+	memcpy(cQueryP, query.c_str(), query.length() + 1);
+	SQLCHAR* cQuery = reinterpret_cast<SQLCHAR*>(cQueryP);
+
+//Run ODBC's preparation function
+	this->sReturn = SQLPrepare(this->sHandle, cQuery, queryLength);
+
+	delete cQuery;
+	cQueryP = NULL;
+	cQuery = NULL;
+
+//Count the number of returned attributes
+	SQLSMALLINT paramCount;
+	SQLNumParams(this->sHandle, &paramCount);
+
+	if (paramCount) {
+	//Walk over each parameter in the query and determine its data type, size, and number of decimal digits
+		SQLSMALLINT dataType;
+		SQLSMALLINT decimalDigits;
+		SQLUINTEGER paramSize;
+
+		SQLPOINTER* buffer = static_cast<SQLPOINTER*>(malloc(paramCount * sizeof(SQLPOINTER)));
+		SQLINTEGER* bufferLength = static_cast<SQLINTEGER*>(malloc(paramCount * sizeof(SQLINTEGER)));
+		SQLINTEGER* paramLength = static_cast<SQLINTEGER*>(malloc(paramCount * sizeof(SQLINTEGER)));
+
+		for(int i = 0; i < paramCount; i++) {
+			this->sReturn = SQLDescribeParam(this->sHandle, i + 1, &dataType, &paramSize, &decimalDigits, NULL);
+			AllocParamBuffer(dataType, paramSize, &buffer[i], &bufferLength[i]);
+			this->sReturn = 
+		}
+	}
+
+/*//Allocate the statement handle
+	this->sReturn = SQLAllocHandle(SQL_HANDLE_STMT, this->cHandle, &this->sHandle);
+	
+//Loop through each of the parameters and bind them to each "?" in "query"
+	int size = sizeof(parameters) / sizeof(parameters[0]);
+	SQLINTEGER NTSLength = 100; //SQL_NTS means "The data is a null-terminated string."
+
+	vector<string> sizeEval;
+	vector<SQLCHAR*> charBuffer;
+	charBuffer.resize(size);
+	SQLCHAR snazz[100] = "sprynoj1";
+	
+	for(int i = 0; i < size; i++) {
+	//Push the given C-string onto the vector of strings so we can quickly evaluate its size
+		sizeEval.push_back(parameters[i]);
+		
+	//Run ODBC's parameter binding function
+		this->sReturn = SQLBindParameter(this->sHandle, i + 1, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR,
+			100, 0, &snazz, 0, &NTSLength);
+	}
+
+//Assign the values to each of the reserved locations in the SQLCHAR vector
+	for(int i = 0; i < size; i++) {
+		charBuffer[i] = reinterpret_cast<SQLCHAR*>(parameters[i]);
+	}
+	std::cout << charBuffer[0];
+//Gather information about the query
+	SQLINTEGER queryLength = static_cast<SQLINTEGER>(query.length());
+	
+	char *cQueryP = new char[query.length() + 1];
+	memcpy(cQueryP, query.c_str(), query.length() + 1);
+	SQLCHAR* cQuery = reinterpret_cast<SQLCHAR*>(cQueryP);
+	
+//Execute the prepared query
+	this->sReturn = SQLExecDirect(this->sHandle, cQuery, queryLength);
+	
+	delete cQuery;
+	cQueryP = NULL;
+	cQuery = NULL;
+
+//Ensure the query was executed successfully
+	if (this->sReturn == SQL_SUCCESS) {
+		//Success
+	} else {
+		throw DatabaseQueryFailedException(this->displayError(SQL_HANDLE_STMT, this->sHandle,
+			"The supplied SQL query contained a syntax error."));
+	}*/
+	
+//Extract the data from the query
+	return this->extract();
+}
+
+vector<map<string, string>> Database::extract() {
 //Count the number of returned attributes
 	SQLSMALLINT columnCount;
 	SQLNumResultCols(this->sHandle, &columnCount);
