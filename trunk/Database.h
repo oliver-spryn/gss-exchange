@@ -15,6 +15,7 @@ public :
 	~Database();
 
 	vector<map<string, string>> query(string query);
+	vector<map<string, string>> sQuery(string query, char** parameters);
 
 	vector<string> attributes;
 	int size;
@@ -25,6 +26,9 @@ protected :
 	HANDLE eHandle;
 	HANDLE sHandle;
 	SQLRETURN sReturn;
+
+private : 
+	vector<map<string, string>> extract();
 };
 
 typedef struct {
@@ -52,3 +56,5 @@ public :
 
 	SQLINTEGER SQLLength;
 } ColumnTypes;
+
+typedef vector<map<string, string>> SQLData;
