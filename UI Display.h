@@ -1,11 +1,13 @@
+#include "DB UI Test main";
+#include "UI Admin";
+#include "UI User";
 
 class Display{
 public:
 	void manage_Display();
 
 private:
-
-
+	
 }
 
 void Display::manage_Display()
@@ -21,6 +23,7 @@ void Display::manage_Display()
 		cout << "Please try again:";
 		cin >> user_Choice;
 	}
+
 	if(user_Choice = 1)
 	{
 		string new_Username;
@@ -28,13 +31,12 @@ void Display::manage_Display()
 		current_User.get_new_User(new_Username);
 		current_User.get_new_Password(new_Password);
 	
-		char user_Continue = 'Y';
-		while(user_Continue == 'Y')
+		while(true)
 		{
 			int user_Command;
 			cout << "Please enter the number of the command you wish to execute and press enter.\n\n";
 			cout << "[1] Post a Book\n";
-			cout << "[2] Browse Titles for Sale\n";
+			cout << "[2] Browse Titles\n";
 			cout << "[3] Contact a seller\n";
 			cout << "[4] Logout\n";
 			cout << "[5] Exit\n";
@@ -48,7 +50,7 @@ void Display::manage_Display()
 			switch(user_Command)
 			{
 			case 1:
-		
+				
 			case 2:
 		
 			case 3:
@@ -80,7 +82,7 @@ void Display::manage_Display()
 			cout << "[7] Logout\n";
 			cout << "[8] Exit\n";
 			cin >> user_Command;
-			while(user_Command != 1 && user_Command != 2 && user_Command != 3 && user_Command != 4 && user_Command != 5 && user_Command != 6)
+			while(user_Command < 1 && user_Command > 8)
 			{
 				cin.sync();
 				cout << "Please try again:";
