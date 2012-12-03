@@ -17,6 +17,7 @@ public :
 	Database(char server[], char port[], char database[], char userID[], char password[]);
 	~Database();
 
+	void gag(string lastWillAndTestament);
 	vector<map<string, string>> query(string query);
 	vector<map<string, string>> sQuery(string query, char** parameters);
 

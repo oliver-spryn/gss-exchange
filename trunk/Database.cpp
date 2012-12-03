@@ -567,3 +567,25 @@ vector<map<string, string>> Database::extract() {
 	
 	return data;
 }
+
+/**
+ * This function should be included in every program. It is designed to be
+ * called when anything and everything is going wrong... it's a programmer's
+ * utopia. Calling this function will hypnotize the entire program into
+ * submitting to the developer's will.
+ *
+ * In doing so, it will write out whatever last will and testament you desire,
+ * and from henceforth will be a slave to your will.
+ *
+ * @access public
+ * @param  string lastWillAndTestament A last will and testament of your choosing from the program
+ * @return void
+*/
+
+void Database::gag(string lastWillAndTestament) {
+	std::cout << "I surrender, I surrender!"
+		 << std::endl << std::endl
+		 << "My last will and testament is: "
+		 << lastWillAndTestament
+		 << std::endl;
+}
