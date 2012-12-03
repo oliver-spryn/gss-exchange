@@ -1,3 +1,7 @@
+#include "UI Admin";
+#include "UI Display";
+#include "UI User";
+
 int main()
 {
 	Display current_Display;

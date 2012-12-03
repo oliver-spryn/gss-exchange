@@ -56,6 +56,11 @@ void User::user_Login(string& user_Name, string& user_Password)
 
 void User::browse_Books()
 {
+	int user_Choice;
+	cout << "Please enter the number of the command you wish to execute:\n\n";
+	cout << "\"[1]\" Browse by Author\n[2] Browse by Title\n\n";
+	getline(cin, user_Choice);
+	
 
 }
 
