@@ -17,6 +17,84 @@ using std::stringstream;
 using std::vector;
 
 /**
+ * A random (friesian) horse... because we needed it:
+ * 
+ * ?????IIIII???????????III????IIII????????????????+??????????????????????IIIIIIIII
+ * ???????????????????????III???????????????????++++++++?+?????????????????????IIII
+ * ???????????????????????????????????????????????+:+?+?+I??I????????????I?I???IIII
+ * ??????????????????????????????????????++++++++++++++????????????????????????????
+ * ??????????????????????????++++++++++++++++++++++++++++++?++????+?????????+??????
+ * +++?+????????????++++++++?++++++++++++++++++++++++++++++++++++++++++++++????????
+ * +++++?+?++++?++?++++++++++++M++7??O=++++++++++++++++++++++++++++++++++??????????
+ * +++++++++++++++++++++++++++IDMMNNDDMN+++++++=+++++++++++++++++??????????????????
+ * ++++++++++++++++++=======?$MMMMDNNDNNN++++++++++++++??+?????????????????????????
+ * ++++++++++++======~~====+NMN8NMNDN8ODND8++++???????????????????????????+????????
+ * ===========~===========+78NDO8DMNMNMM88ZO8+??????????????????????+??+??+++??????
+ * =========++++++++++++++IMDNDN8NNMMNNDO8OZ$ZOO+???????+++++++?????++++++++++?+++?
+ * +====+++++++++++++++++INDDDDMMMMMMMMNNMMNDN88DD=++++++++++++++++++++++++++++++?+
+ * =+=++++++++++++=+++++?ZNMN8DMNMMMMMMMMMDN8OONMMM+=++++++++++++++++++++++++??+???
+ * ++===++=========+==+?$DMDN8NMMMMMMMMMMMMMMMDDMMM=++++++++++++++++???????++++++??
+ * ================++=+I7O8DMD8NMMDMMMMMM$MMMMNMMM=+++++++??????????????++++++++???
+ * ====================Z?MNDDNMMMMMMMMNMMM8N+++++?????????7$DODDMM88MMDN?+?????????
+ * ===============+++?+Z$MMDMMMMMMMMMMMMMMMM?++?????????NNMMMNDNMNMMN8?+8O+?????+++
+ * ==================+?INMNNMMMMMMMMMMMMMMMMN??????????MMMMM?++MMMMMMMMM+++++++++++
+ * ================+++7D$NMMMMMMMMMMMMMMNMMMMMM??+++++MMMM+++++++?I++++++++++++++++
+ * ==========+++++++++77MMMMMMNMMMMNMMNMMMMMMMMMM?+++DMMMM+++++++++++++++++++++++++
+ * =======+++++++++++?ZMMMMMMMMMMMMMMMMMNNNMMMMMMMMMOMMNN+=+=+==+++======++++++++++
+ * ==========+++++++?$MMOMMMMMMMMMMMMMMMMMDDZOOONMMMMMNNM=======+==++++++++++++++++
+ * ==========+=+$7I$IIM7MMMNMMMNNOZZZ$ZZ8DDDOZZ$O8NMMMNMM====+==+++++++++++++++++++
+ * ==========+======$OIDNMMMMMMND88N8OZ$7$Z$Z8O8DO8MDMMMM====++++++++++==++===+++++
+ * ~~~~~~~~~~~~~?=I8~==N~MMMMMMND8N8ZOZZ8NNNMMMNNNNNMMMM+==========================
+ * ~~~~~~~~~=I?++=====O+?7MMMMMMNNDND8888DNMNMNMMMMMMMMM?===~=========~=====~==~~~~
+ * ==~~~=~~====~~~~+?7=+=IOMMMMMNNMMDD8OO8NNNNNMNNMMMMZZZ8ODNNN~~~~~~~~~~~~~~~~~===
+ * ===~~~~=====~~~=+~~~~=?$MMMMMNMMNOOO8ZO8OO8ODNNZZDNNMMMNNNMM7~=============+=+==
+ * =~~~~~~~~~~~~~~=+~~~~++7M8DMMNMMNDOOZOOO8ODNNMMNMMMMMMNM=MMM====================
+ * ~~~~~~~=~~~~~~+:~~~~=~=?I8$8?MMNN8OODDNDDNMMMMMMNMMMM====MMM====================
+ * =====~=~~~~~~==========I+=ZZNMMNNDO8NNMMMMMMMMMMMMM~=====NMM====================
+ * ============================MMMNDDZODMMMMMMMMMMMM======?DM8M====================
+ * ===========================NMMMD8OODNMMMMMMMMMMMN=====$MDDDN====================
+ * ==========================NMMNNDZOODNNNMMNMMMMMM======NMMMNM====================
+ * ========================+NMMNNOZOZDDNMMMMMMMMMM========ONMM=====================
+ * =======================IMMMMDZZO8DNMMMMMMMMMMM~========NMMM=====================
+ * =====================~MMMMM8ZZDNNMMMMMMMMMMMM====~~~~~~~MDN~=~==============~=~=
+ * ========~===========7MMMMMNDZDNMMMMMMMMMMMMN~~~~~~~~~~~~~~~~~=~~~~~~~~~~=~~~~~~~
+ * ==~==========~~~~~~NNNODNNN8$8NMMMMMMMMMMMZ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * ~~~~~~~~~~~~~~~~~~NDDNDDMMMO8NNMMMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * ~~~~~~~~~~~~~~~~:DDOOO88MMMMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=7?~
+ * ~~~~~~~~~~~~~~~~DD8O8ZZZDMMMMMMMMMMMMMM7=~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ZZ$88O8
+ * ~~~~~~~~~~~~~~~~NDZDNN8ODDMMMMMMMMMMM8I888ZOO~~~~~~~~~=~~~~~~~~~~~~~~~~~?7$+?=8+
+ * ~~~~~~~~~~~~~~~DND8NMMNNDD8MNMMMMMMM$+=++==++=~~~~~~~?$Z8I~~~~~~~~~~~~~~O?+Z+??~
+ * ~~~~~~~~~~~~~~~NNDDNMMMMNN88MMMMMM~?~=II=~=O~~~~~~~~?78==+~~~~~~~~~~~~~~ZOO$ZZ8D
+ * ~~~~~~~~~~~~~~~NM88MNMMMMN8ZDMMMMM8OI?O$O$?=IOD?~~~$IZ$$OZ$8~=+~~~~~~~+~==77OI8Z
+ * ~~~~~~~~~~=DMMMNNNZNNMMNNDD8ZNMMMMZ+$Z8OOOZ+=++=~~~+O7O7DZDZ8$O~~~~~~~Z~~??88ZZ8
+ * ~~~~~=~~?+DNNNMZMN88DMMNNDDDOZDM+88ZD8O88D==7D8D~~~+$8N7?O==ZZNI~~~~=88ZZ==7?ZON
+ * 8O8O8888DNMNNMM8NMN8MMMNNNNND8OMDOD8OO8DN$OZ$7777I7$DDNOZ7Z8NDDD$Z778NMN87ZD8NND
+ * 88DN8NODNNNNMMMDZD8NMNMNNNMMNNNM8DDNO8MDDD$8DOOOOZ88ND8ND8O8DDDN88OZNNDN8DD8DDD8
+ * D8DDDO8DMNMMMMMD8NMMMMNNNMMMMNMM$ZO87D88OOZO$7$Z$Z$77Z$$Z$$Z7$I777I??III7I??7I?I
+ * +?+?+++IMMMMMMND++??MMMMMMMMMMM+??++??I?++?????????III????I???IIIIIIIIIII7?IIII?
+ * IIII?IIMMMMMMMMN?II??IMMMMMMNMM?7IIII????+?++????I??II???II7IIII?I?I7II?II???III
+ * ??II?IZMMMMDMMMOO???IIIMMNMMMMI+??III?I?IIIII7IIIIII7$7III7II7II7$I777IIIIIII7I7
+ * I?IIIIIMMMMNNMMNDZII777MMMMMMMI77$IIIII+I7II7IIIII7$$$$77II7II77I$77I77I7I77I777
+ * I7$77$8MMMMMNMMN$$O77$MMMMMMMM7$7$777I777I=I?II77I777III77I$7II7II?I777I$7O777$7
+ * II7$$I7MMMMMMMMNO$$7I8MMMMMMMO777I7I?II77I?7IIII?777$?I?7777777$$$$7$$7I?7?I7777
+ * $77$77$MMMMMMMMM$7$7DN8MMNMMMI?7777I77I77$7II77Z77??7I77I7IZ7Z$$$$ZIIZ7777I7$777
+ * I77III$MMMMNMMMM87$$MMDNNNOMMIII777$I77Z7777$777$7III7777$$$$Z$7$$Z7IIII7?777$7$
+ * 77III7MMMMMMMMNMD$ZZZMMMMMMMN7I?$77777$77$7$ZIZ777Z+$I7IIII$Z$$7$II7777777I77$O7
+ * I7I77NMMMMMMMDDOO7Z$$MMMMMMMM$IO$$7ZZZ$77IZ$ZIZ$II7I7I??I?II7ZOO8$$?I7$7$7$IZZI?
+ * 7Z77DMMMMMNMDDD8Z88$7ZMMMMMMMDZ7ZZZ$ZZZ$7Z+$$$I7I$IIIIIII+??I87DNII8$$7$II7$$O$?
+ * I7ONMMNMMMMO7D?N7IOZ7$8MNMZMMM8Z8DD$8D$77ZZZ7Z$ZOIII7$I77$I777?7Z7$II$7$7Z?$?I7Z
+ * I7NMNMDMZ?Z8DZM7=877Z7ZODMN8DNNMNM$DNOZ$77?I$IOD7Z7I$777$O7+$$???=+77O?77$77II??
+ * 8MMMMMM$DZ?+I+OO??7II7$ON78$M87DNMDNZ7$7II?I$Z77$?77$$I$7$I7=?I77???Z7I7$7I+7I$I
+ * 8NM8MN$$I$7?7?7ZI7I?7I7?I$$?Z7Z7$D7?$ZIZZ$7I7?$?+?I$O7O7II77+??I$~7777I?III$?II?
+ * 7I??I7??II77III7I7IZZO$Z$8$7IOZ7$?7Z777I77$Z?I7II$7$O8ZO$7+7I??7?$=IO7IIIO+++I$$
+ * +I77+$77II7$$~7I$II7I$?7??+$7I7$IIIO?7IZ$77?Z8I$$$77$$?O$Z$7OZI$7=7??O=$$I7=O$=?
+ * IO877I7$$7$I77=77$?I7?78?$?$7I7?I=I7$77D?O8II+?8ZOZZ$$7IZ?Z?IO?I7O$?$$OOI7?Z7+$I
+ * 77+7$7Z$I?I7$+777$:I?$$IZD$OI~7I?DI?Z+ZI$I$$I8IIZ88OZZZ$II7+ZZ$I7?Z88$77=Z7778$O
+ * $ZZIZO8IZI??+Z$I$I7I7?8DOZ$8O=O$:IZZ$$$IZ$I?I$$+7$ZI7IZ7$Z$ZD7$$$?Z7?IOO8Z?$$,,=
+ *                                                                   GlassGiant.com
+*/
+
+/**
  * CONSTRUCTOR
  * 
  * This constructor connects to a local SQL Server instance. The desired 
@@ -111,7 +189,7 @@ Database::Database(char server[], char port[], char database[], char userID[], c
  * This destructor disconnects from the SQL Server and frees the connection and
  * environment handles.
  *
- * @access private
+ * @access public
  * @return void
 */
 
@@ -126,7 +204,7 @@ Database::~Database() {
  * SQL server (depending on the encountered error), then formats, and returns
  * the error in a friendly, human readable format.
  *
- * @access private
+ * @access protected
  * @param  unsigned int     handleType    The type of handle which encountered an error
  * @param  const SQLHANDLE& handle        A reference to the handle which encountered an error
  * @param  string           customMessage A friendly, descriptive message which is included by the developer at the place of error
@@ -153,10 +231,18 @@ string Database::displayError(unsigned int handleType, const SQLHANDLE &handle, 
 }
 
 /**
+ * This is the non-safe variation of the sQuery() member function.
+ * 
  * This member function is where all of the "query magic" happens. This 
  * function is able to take ANY valid SQL query and return a vector
  * matrix of the all results returned from a SELECT statement. This matrix 
  * will represent the strcture of the returned tuples and their attributes.
+ *
+ * The purpose of this memeber function over sQuery() is to avoid its 
+ * additional overhead. This member function is less expensive than the 
+ * sQuery() function, and is recommended only when a query is constructed 
+ * in such a way that SQL injection attacks are not possible, such as if
+ * an SQL query is compiled directly into an application.
  * 
  * It will also put the number of tuples returned from a query in the 
  * public "size" member variable, and the name of each of the returned 
@@ -176,37 +262,13 @@ string Database::displayError(unsigned int handleType, const SQLHANDLE &handle, 
  *
  * ... a query such as this:
  *
- *     SELECT * FROM Users;
+ *     SELECT * FROM Users
  *
  * ... will allow a user to access the data from the statement, like so:
  *
- *    <vector<map<string, string>> data = db.query("SELECT * FROM Users");
+ *    SQLData data = db.query("SELECT * FROM Users");
  *    cout << data[0]["FName"] << " " << data[0]["LName"]; // John Smith
  *    cout << data[1]["UName"]; // JDoe
- * 
- * This function will return data from tuples containing attributes of the
- * following types:
- *  - BIT
- *  - CHAR(n)
- *  - DECIMAL(p, s)
- *  - DOUBLE
- *  - FLOAT(p)
- *  - INT/INTEGER
- *  - NUMERIC(p, s)
- *  - REAL
- *  - SMALLINT
- *  - TIMESTAMP(p)
- *  - VARCHAR(n)
- *
- * Here are some helpful resources used during the construction of this
- * member function:
- *  - http://www.anaesthetist.com/mnm/sql/odbc.htm
- *  - http://www.cplusplus.com/forum/general/36365/
- *  - http://www.cplusplus.com/forum/general/36840/
- *  - http://msdn.microsoft.com/en-us/library/windows/desktop/ms710150(v=vs.85).aspx
- *  - http://msdn.microsoft.com/en-us/library/windows/desktop/ms714556(v=vs.85).aspx
- *  - http://msdn.microsoft.com/en-us/library/windows/desktop/ms709280(v=vs.85).aspx
- *  - http://msdn.microsoft.com/en-us/library/windows/desktop/ms716298(v=vs.85).aspx
  *
  * @access public
  * @param  string                       query The query to be executed on the database
@@ -243,6 +305,63 @@ vector<map<string, string>> Database::query(string query) {
 	return this->extract();
 }
 
+/**
+ * This is the "safe" variation of the query() member function.
+ * 
+ * This member function is where all of the "query magic" happens. This 
+ * function is able to take ANY valid SQL query and return a vector
+ * matrix of the all results returned from a SELECT statement. This matrix 
+ * will represent the strcture of the returned tuples and their attributes.
+ *
+ * The purpose of this memeber function over query() is to prevent any
+ * possible SQL injection attacks from a user. This member function is more
+ * expensive than the query() function, and is recommended only when a query
+ * is constructed from user input.
+ * 
+ * It will also put the number of tuples returned from a query in the 
+ * public "size" member variable, and the name of each of the returned 
+ * attributes in the public "attributes" member variable.
+ * 
+ * For example, if there is a relation such as this:
+ *
+ *     +----------------------------------+
+ *     |             Users                |
+ *     +-------+-------+--------+---------+
+ *     | FName | LName | UName  |  PWord  |
+ *     +-------+-------+--------+---------+
+ *     | John  | Smith | JSmith | ABC123! |
+ *     +-------+-------+--------+---------+
+ *     | Jane  |  Doe  |  JDoe  | DEF456@ |
+ *     +-------+-------+--------+---------+
+ *
+ * ... a query such as this:
+ *
+ *     SELECT * FROM Users WHERE LName = ? OR LName = ?
+ *
+ * ... and an array of parameters such as this:
+ *
+ *     char* params[] = {"Smith", "Doe"};
+ *
+ * ... will allow a user to access the data from the statement, like so:
+ *
+ *    SQLData data = db.query("SELECT * FROM Users WHERE LName = ? OR LName = ?", params);
+ *    cout << data[0]["FName"] << " " << data[0]["LName"]; // John Smith
+ *    cout << data[1]["UName"]; // JDoe
+ *
+ * Here are some helpful resources used during the construction of this
+ * member function:
+ *  - http://www.raima.com/docs/rdme/9_1/Content/SQL/SQLDescribeParam.htm
+ *  - http://msdn.microsoft.com/en-us/library/windows/desktop/ms710188(v=vs.85).aspx
+ *  - http://msdn.microsoft.com/en-us/library/windows/desktop/ms710963(v=vs.85).aspx
+ *
+ * @access public
+ * @param  string                       query      The query to be executed on the database
+ * @param  char**                       parameters An array of C-strings which will replace each "?" in the query parameter
+ * @return vector<map<string, string>>  data       A vector matrix which resembles the set of tuples returned from a query
+ * @throws DatabaseQueryFailedException            Occurs if the SQL server returns an error, usually due to a syntax error
+ * @throws DatabaseAttributeTypeUnknown            Occurs if the retrieved data contains an attribute type which this method cannot process
+*/
+
 vector<map<string, string>> Database::sQuery(string query, char** parameters) {
 //Allocate the statement handle
 	this->sReturn = SQLAllocHandle(SQL_HANDLE_STMT, this->cHandle, &this->sHandle);
@@ -270,69 +389,59 @@ vector<map<string, string>> Database::sQuery(string query, char** parameters) {
 		SQLSMALLINT dataType;
 		SQLSMALLINT decimalDigits;
 		SQLUINTEGER paramSize;
-
-		SQLPOINTER* buffer = static_cast<SQLPOINTER*>(malloc(paramCount * sizeof(SQLPOINTER)));
-		SQLINTEGER* bufferLength = static_cast<SQLINTEGER*>(malloc(paramCount * sizeof(SQLINTEGER)));
-		SQLINTEGER* paramLength = static_cast<SQLINTEGER*>(malloc(paramCount * sizeof(SQLINTEGER)));
+		SQLINTEGER NTS = SQL_NTS; //SQL_NTS means the data is terminated by a "\0"
 
 		for(int i = 0; i < paramCount; i++) {
+		//Use ODBC to grab information regarding a specific parameter
 			this->sReturn = SQLDescribeParam(this->sHandle, i + 1, &dataType, &paramSize, &decimalDigits, NULL);
-			AllocParamBuffer(dataType, paramSize, &buffer[i], &bufferLength[i]);
-			this->sReturn = 
+			
+		//Bind to and populate this parameter
+			this->sReturn = SQLBindParameter(this->sHandle, i + 1, SQL_PARAM_INPUT, SQL_C_CHAR, dataType,
+				paramSize, decimalDigits, parameters[i], strlen(parameters[i]), &NTS);
 		}
 	}
 
-/*//Allocate the statement handle
-	this->sReturn = SQLAllocHandle(SQL_HANDLE_STMT, this->cHandle, &this->sHandle);
-	
-//Loop through each of the parameters and bind them to each "?" in "query"
-	int size = sizeof(parameters) / sizeof(parameters[0]);
-	SQLINTEGER NTSLength = 100; //SQL_NTS means "The data is a null-terminated string."
-
-	vector<string> sizeEval;
-	vector<SQLCHAR*> charBuffer;
-	charBuffer.resize(size);
-	SQLCHAR snazz[100] = "sprynoj1";
-	
-	for(int i = 0; i < size; i++) {
-	//Push the given C-string onto the vector of strings so we can quickly evaluate its size
-		sizeEval.push_back(parameters[i]);
-		
-	//Run ODBC's parameter binding function
-		this->sReturn = SQLBindParameter(this->sHandle, i + 1, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR,
-			100, 0, &snazz, 0, &NTSLength);
-	}
-
-//Assign the values to each of the reserved locations in the SQLCHAR vector
-	for(int i = 0; i < size; i++) {
-		charBuffer[i] = reinterpret_cast<SQLCHAR*>(parameters[i]);
-	}
-	std::cout << charBuffer[0];
-//Gather information about the query
-	SQLINTEGER queryLength = static_cast<SQLINTEGER>(query.length());
-	
-	char *cQueryP = new char[query.length() + 1];
-	memcpy(cQueryP, query.c_str(), query.length() + 1);
-	SQLCHAR* cQuery = reinterpret_cast<SQLCHAR*>(cQueryP);
-	
 //Execute the prepared query
-	this->sReturn = SQLExecDirect(this->sHandle, cQuery, queryLength);
-	
-	delete cQuery;
-	cQueryP = NULL;
-	cQuery = NULL;
+	this->sReturn = SQLExecute(this->sHandle);
 
-//Ensure the query was executed successfully
-	if (this->sReturn == SQL_SUCCESS) {
-		//Success
-	} else {
-		throw DatabaseQueryFailedException(this->displayError(SQL_HANDLE_STMT, this->sHandle,
-			"The supplied SQL query contained a syntax error."));
-	}*/
-	
 //Extract the data from the query
 	return this->extract();
 }
+
+/**
+ * This function is used to extract the low-level data fetched from the
+ * SQL query and transform it into a vector mapping of strings to strings
+ * for easy and quick access from the application-level implementation.
+ *
+ * This function will return data from tuples containing attributes of the
+ * following types:
+ *  - BIT
+ *  - CHAR(n)
+ *  - DECIMAL(p, s)
+ *  - DOUBLE
+ *  - FLOAT(p)
+ *  - INT/INTEGER
+ *  - NUMERIC(p, s)
+ *  - REAL
+ *  - SMALLINT
+ *  - TIMESTAMP(p)
+ *  - VARCHAR(n)
+ *
+ * Here are some helpful resources used during the construction of this
+ * member function:
+ *  - http://www.anaesthetist.com/mnm/sql/odbc.htm
+ *  - http://www.cplusplus.com/forum/general/36365/
+ *  - http://www.cplusplus.com/forum/general/36840/
+ *  - http://msdn.microsoft.com/en-us/library/windows/desktop/ms710150(v=vs.85).aspx
+ *  - http://msdn.microsoft.com/en-us/library/windows/desktop/ms714556(v=vs.85).aspx
+ *  - http://msdn.microsoft.com/en-us/library/windows/desktop/ms709280(v=vs.85).aspx
+ *  - http://msdn.microsoft.com/en-us/library/windows/desktop/ms716298(v=vs.85).aspx
+ *
+ * @access private
+ * @return vector<map<string, string>>  data A vector matrix which resembles the set of tuples returned from a query
+ * @throws DatabaseQueryFailedException      Occurs if the SQL server returns an error, usually due to a syntax error
+ * @throws DatabaseAttributeTypeUnknown      Occurs if the retrieved data contains an attribute type which this method cannot process
+*/
 
 vector<map<string, string>> Database::extract() {
 //Count the number of returned attributes
@@ -372,7 +481,7 @@ vector<map<string, string>> Database::extract() {
 			//Success
 		} else {
 			throw DatabaseQueryFailedException(this->displayError(SQL_HANDLE_STMT, this->sHandle, 
-				"An error was encountered while building the SQL return matrix."));
+				"An error was encountered while building the SQL return matrix. Perhaps the supplied SQL query contained a syntax error."));
 		}
 
 	//Loop over each attribute in the tuple

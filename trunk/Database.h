@@ -1,3 +1,6 @@
+#ifndef DATABASE_H
+#define DATABASE_H
+
 #include <Windows.h>
 #include <map>
 #include <sqlext.h>
@@ -21,8 +24,9 @@ public :
 	int size;
 
 protected : 
-	HANDLE cHandle;
 	string displayError(unsigned int handleType, const SQLHANDLE &handle, string customMessage);
+
+	HANDLE cHandle;
 	HANDLE eHandle;
 	HANDLE sHandle;
 	SQLRETURN sReturn;
@@ -58,3 +62,5 @@ public :
 } ColumnTypes;
 
 typedef vector<map<string, string>> SQLData;
+
+#endif
