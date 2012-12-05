@@ -1,6 +1,4 @@
-#include "UI Admin";
-#include "UI Display";
-#include "DB UI Test main";
+#include "UI Display.h";
 
 class User{
 public:
@@ -49,8 +47,8 @@ void User::user_Login(string& user_Name, string& user_Password)
 	//Execute query to add a new username
 
 	} catch (QueryFailedException e){
-	cout << "That username is not valid. Please enter another: ";
-		get_new_User(user_Name);
+	cout << "The username or password is not valid. Please enter another: ";
+		user_Login(user_Name, user_Password);
 	}
 }
 
