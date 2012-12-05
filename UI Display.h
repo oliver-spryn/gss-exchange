@@ -1,6 +1,5 @@
-#include "DB UI Test main";
-#include "UI Admin";
-#include "UI User";
+#include "UI Admin.h"
+#include "UI User.h"
 
 class Display{
 public:

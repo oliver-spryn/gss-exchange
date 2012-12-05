@@ -1,6 +1,5 @@
-#include "UI Display";
-#include "UI User";
-#include "DB UI Test main.cpp";
+#include "UI Display.h";
+#include "UI User.h";
 
 class Admin : public User{
 public:
