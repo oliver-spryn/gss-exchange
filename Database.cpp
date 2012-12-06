@@ -11,6 +11,8 @@
 #include "DatabaseConnectionException.h"
 #include "DatabaseQueryFailedException.h"
 
+using std::cout;
+using std::endl;
 using std::map;
 using std::string;
 using std::stringstream;
@@ -583,9 +585,9 @@ vector<map<string, string>> Database::extract() {
 */
 
 void Database::gag(string lastWillAndTestament) {
-	std::cout << "I surrender, I surrender!"
-		 << std::endl << std::endl
+	cout << "I surrender, I surrender!"
+		 << endl << endl
 		 << "My last will and testament is: "
 		 << lastWillAndTestament
-		 << std::endl;
+		 << endl;
 }
