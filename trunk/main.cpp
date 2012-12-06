@@ -121,31 +121,30 @@ void create_new_book(Database* db, string u_name, string isbn10, string isbn13, 
 //End of Jon's secrtion
 
 int main(int argc, char *argv[]) {
-	/*try {
+	try {
 		Database db("SQLServer", "PROJECT");
 		
-		/*vector<map<string, string>> data = db.query("SELECT * FROM Users");
+		vector<map<string, string>> data = db.query("SELECT * FROM Users");
 		
 		for(int i = 0; i < db.size; i++) {
 			cout << data[i]["FName"] << " " << data[i]["LName"]
 			<< " has a role of " << data[i]["Role"] << endl;
 		}
 
-		cout << db.size;*/
+		cout << db.size;
 		
-	//	char* stuff[] = {"sprynoj1"};
-	//	db.sQuery("SELECT * FROM Users WHERE UName = ?", stuff);
-	//	cout << db.size;
-	//} catch (DatabaseAttributeTypeUnknown e) {
-	//	cout << e;
-	//} catch (DatabaseConnectionException e) {
-	//	cout << e;
-	//} catch (DatabaseQueryFailedException e) {
-	//	cout << e;
-	//}
+		char* stuff[] = {"sprynoj1"};
+		db.sQuery("SELECT * FROM Users WHERE UName = ?", stuff);
+		cout << db.size;
+	} catch (DatabaseAttributeTypeUnknown e) {
+		cout << e;
+	} catch (DatabaseConnectionException e) {
+		cout << e;
+	} catch (DatabaseQueryFailedException e) {
+		cout << e;
+	}
 
 	Display current_Display;
 	current_Display.manage_Display();
-	return 0;
 	return 0;
 }
