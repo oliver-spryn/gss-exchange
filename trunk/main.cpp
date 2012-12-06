@@ -142,5 +142,9 @@ int main(int argc, char *argv[]) {
 	//} catch (DatabaseQueryFailedException e) {
 	//	cout << e;
 	//}
+
+	Display current_Display;
+	current_Display.manage_Display();
+	return 0;
 	return 0;
 }
