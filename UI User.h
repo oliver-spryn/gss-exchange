@@ -11,8 +11,6 @@ public:
 	void logout();
 	void exit();
 private:
-
-
 };
 
 
@@ -59,15 +57,29 @@ void User::browse_Books()
 	cout << "\"[1]\" Browse by Author\n[2] Browse by Title\n\n";
 	getline(cin, user_Choice);
 	
+	if(user_Choice == 1)
+	{
+		try{
 
+		//Execute query to display books by Author
+
+		} catch (QueryFailedException e){
+		cout << "Author not found.";
+		}
+	}
+	else if(user_Choice == 2)
+	{
+		try{
+
+		//Execute query to display books by title
+
+		} catch (QueryFailedException e){
+		cout << "Title not found.";
+		}
+	}
 }
 
 void User::contact_Seller()
-{
-
-}
-
-void User::logout()
 {
 
 }
