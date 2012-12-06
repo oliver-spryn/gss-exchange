@@ -1,25 +1,17 @@
-#include "UI Display.h";
-#include "UI User.h";
+#include <iostream>
+#include <map>
+#include <string>
+#include <vector>
+#include "UI User.h"
+#include "DatabaseAttributeTypeUnknown.h"
+#include "DatabaseConnectionException.h"
+#include "DatabaseQueryFailedException.h"
 
 class Admin : public User{
 public:
-	void create_Seller(int main);
+	void create_Seller();
 	void delete_Users();
 	void browse_users();
-
 private:
 
 };
-
-void Admin::create_Seller()
-{
-
-}
-void Admin::delete_Users()
-{
-
-}
-void Admin::browse_users()
-{
-
-}
