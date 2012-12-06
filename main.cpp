@@ -3,16 +3,17 @@
 #include <string>
 #include <vector>
 
+#include "UI Admin.h"
+#include "UI Display.h"
+#include "UI User.h"
 #include "Database.h"
 #include "DatabaseAttributeTypeUnknown.h"
 #include "DatabaseConnectionException.h"
 #include "DatabaseQueryFailedException.h"
-
-
 using std::cout;
 using std::endl;
 
-//Begining of Jon's secion
+//Begining of Jon's section
 bool user_exist(Database* db, string u_name){
 	vector<map<string, string>> db_return = db->query("select Count(UName) from Users where UName = '" + u_name + "';");
 	if(db_return[0].begin()->second == "0") return false;
